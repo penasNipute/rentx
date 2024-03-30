@@ -1,4 +1,4 @@
-import { Category } from "../model/category"
+import { Category } from "../entities/category"
 
 //DTO - data transfer object: serve para transferir dados de uma class para outra
 interface ICreateCategoryDTO{
@@ -8,8 +8,8 @@ interface ICreateCategoryDTO{
 
 
 interface ICategoryRepository{
-  findByName(name:string): Category
-  list(): Category[]
+  findByName(name:string): Promise<Category>
+  list(): Promise<Category[]>
   create({name, description}: ICreateCategoryDTO): void
 }
 

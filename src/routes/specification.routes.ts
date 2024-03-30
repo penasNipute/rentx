@@ -1,11 +1,13 @@
 import { Router } from "express";
 import { createSpecificationController } from "../modules/cars/useCase/createSpecification/insex";
 
-const specificationRoutes = Router()
+const specificationsRoutes = Router()
 
 
-specificationRoutes.post('/', (req, res) =>{
+specificationsRoutes.post('/', (req, res) =>{
   return createSpecificationController.handle(req,res)
 })
 
-export { specificationRoutes }
+
+
+export { specificationsRoutes }

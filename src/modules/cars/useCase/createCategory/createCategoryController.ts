@@ -9,12 +9,18 @@ class CreateCategoryController{
 
   constructor(private createCategoreUseCase: CreateCategoryUseCase){}
 
-  handle(req: Request, res: Response): Response{
-    const { name, description } = req.body
   
-    this.createCategoreUseCase.execute({name, description})
+  async handle(req: Request, res: Response): Promise<Response>{
+    try {
+      const { name, description } = req.body
   
-    return res.status(201).json({message:'Repository created'})
+      await this.createCategoreUseCase.execute({name, description})
+    
+      return res.status(201).json({message:'Repository created'})
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+    
 
   }
 

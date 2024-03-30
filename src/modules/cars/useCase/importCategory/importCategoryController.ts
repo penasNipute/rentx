@@ -7,14 +7,14 @@ class ImportCategoryController{
 
   constructor(private importCategoryUseCase: ImportCategoryUseCase){}
 
-  handle(req:Request, res:Response):Response{
+  async handle(req:Request, res:Response):Promise<Response>{
     const { file } = req
 
     if(!file){
       throw new Error('Ficheiro nao recebido')
     }
 
-    this.importCategoryUseCase.execute(file)
+    await this.importCategoryUseCase.execute(file)
 
     return res.send()
   }
